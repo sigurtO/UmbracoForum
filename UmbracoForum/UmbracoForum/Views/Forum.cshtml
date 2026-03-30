@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Forum>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	// get child pages that are "ForumTopic"
+	var topics = Model.Children<ForumTopic>();
+}
+
+<div>
+    <h1>@Model.Title</h1>
+    <p>@Model.Description</p>
+</div>
+
+
+<hr />
+
+<h2> Discussion Topics <h2>
+<div class="forum-topics-list">
+    @if (topics != null && topics.Any())
+    {
+        <ul>
+            @foreach (var topic in topics)
+            {
+                <li>
+                    <h3><a href="@topic.Url()">@topic.TopicTitle</a></h3>
+                    <p>@topic.TopicDescription</p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No topics have been created yet. Check back soon!</p>
+    }
+</div>

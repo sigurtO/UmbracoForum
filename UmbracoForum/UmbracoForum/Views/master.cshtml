@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>@Model.Name - My Community</title>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f0f2f5; color: #333; }
+        header { background: #1a1a1a; color: #fff; padding: 1rem 2rem; }
+        header a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+        .container { max-width: 900px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        a { color: #0056b3; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        hr { border: none; border-top: 1px solid #eaeaea; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/">My Community Forum</a>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+</body>
+</html>

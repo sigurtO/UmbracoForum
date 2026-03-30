@@ -2,5 +2,41 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ForumThread>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
+	Layout = "master.cshtml";
+	// Get all replies, ordered chronologically so the oldest comment is first
+    var replies = Model.Children<ForumReply>()?.OrderBy(x => x.CreateDate); //this is how forums work btw
 }
+
+<a href="@Model.Parent.Url()">&larr; Back to @Model.Parent.Name</a>
+
+<div class="main-thread">
+    <h1>@Model.ThreadTitle</h1>
+    <small>Posted on @Model.CreateDate.ToString("f")</small>
+    
+    <div class="thread-content" style="margin-top: 20px; padding: 15px; background: #f9f9f9;">
+        @Html.Raw(Model.ThreadContent)
+    </div>
+</div>
+
+<hr />
+
+<h3>Replies (@(replies?.Count() ?? 0))</h3>
+
+<div class="replies-list">
+    @if (replies != null && replies.Any())
+    {
+        foreach (var reply in replies)
+        {
+            <div class="reply-card" style="border-bottom: 1px solid #ccc; padding-bottom: 15px; margin-bottom: 15px;">
+                <div class="reply-body">
+                    @Html.Raw(reply.ReplyContent)
+                </div>
+                <small style="color: gray;">Replied on @reply.CreateDate.ToString("MMM dd, yyyy HH:mm")</small>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No replies yet.</p>
+    }
+</div>
