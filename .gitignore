@@ -57,6 +57,20 @@ nunit-*.xml
 ## Umbraco CMS
 ##
 
+# Visual Studio cache/options directory
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
 # JSON schema file for appsettings.json
 appsettings-schema.json
 

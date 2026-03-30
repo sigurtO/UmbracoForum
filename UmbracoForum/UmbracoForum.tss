@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>AppCapabilitiesUmbracoForum\UmbracoForum.csproj</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum.slnx</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>
