@@ -2,10 +2,16 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>AppCapabilitiesUmbracoForum\UmbracoForum.csproj</string>
+      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum\Models\CreateThreadViewModel.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum.slnx</string>
+      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum\Controllers\ForumController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum\Views\ForumTopic.cshtml</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\sigur\Projects\UmbracoForum\UmbracoForum\UmbracoForum\Views\Forum.cshtml</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

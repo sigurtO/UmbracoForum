@@ -11,38 +11,23 @@
 
 <a href="/">&larr; Back to Forum Home</a>
 
-<h1>@Model.TopicTitle</h1>
-<p>@Model.TopicDescription</p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <h1>@Model.TopicTitle</h1>
+        <p>@Model.TopicDescription</p>
+    </div>
+    
+    <button onclick="toggleThreadForm()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        + Create Thread
+    </button>
+</div>
+
+@await Html.PartialAsync("Partials/_CreateThreadForm", new CreateThreadViewModel { TopicId = Model.Id })
 
 <hr />
 
-<div class="create-thread-box" style="background: #e9ecef; padding: 20px; border-radius: 5px; margin-bottom: 30px;">
-    <h3>Start a New Discussion</h3>
-    
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <p style="color: red;">@TempData["ErrorMessage"]</p>
-    }
+<div class="thread-list">
 
-    @using (Html.BeginUmbracoForm<ForumController>(nameof(ForumController.SubmitNewThread)))
-    {
-        <input type="hidden" name="TopicId" value="@Model.Id" />
-
-        <div style="margin-bottom: 10px;">
-            <label>Thread Title:</label><br />
-            <input type="text" name="Title" required style="width: 100%; padding: 8px;" />
-        </div>
-
-        <div style="margin-bottom: 10px;">
-            <label>Your Message:</label><br />
-            <textarea name="Content" rows="5" required style="width: 100%; padding: 8px;"></textarea>
-        </div>
-
-        <button type="submit" style="padding: 10px 20px; background: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            Post Thread
-        </button>
-    }
-</div>
 
 <div class="thread-list">
     @if (threads != null && threads.Any())
@@ -50,10 +35,11 @@
         <ul>
             @foreach (var thread in threads)
             {
-                <li>
-                    <a href="@thread.Url()">@thread.ThreadTitle</a>
-                    <br />
-                    <small>Posted: @thread.CreateDate.ToString("MMM dd, yyyy")</small>
+                <li style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    <h3 style="margin: 0 0 5px 0;">
+                        <a href="@thread.Url()" style="text-decoration: none; color: #0056b3;">@thread.ThreadTitle</a>
+                    </h3>
+                    <small style="color: #666;">Posted on: @thread.CreateDate.ToString("MMM dd, yyyy")</small>
                 </li>
             }
         </ul>
@@ -63,3 +49,22 @@
         <p>There are no threads in this topic yet. Be the first to start a discussion!</p>
     }
 </div>
+
+<script>
+    function toggleThreadForm() {
+        var formWrapper = document.getElementById("create-thread-wrapper");
+        if (formWrapper.style.display === "none") {
+            formWrapper.style.display = "block";
+        } else {
+            formWrapper.style.display = "none";
+        }
+    }
+
+    // Optional UX trick: If the server returns an ErrorMessage, keep the form open on page load!
+    @if(TempData["ErrorMessage"] != null)
+    {
+        <text>
+            document.getElementById("create-thread-wrapper").style.display = "block";
+        </text>
+    }
+</script>
